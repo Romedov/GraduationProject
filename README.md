@@ -1,3 +1,3 @@
 # GraduationProject
-FDP Graduation Project
+FDP Graduation Project.
 This is the on-line cashbox application development graduation project
