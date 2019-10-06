@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GraduationProject.ViewModel
 {
     /// <summary>
-    /// Логика взаимодействия для ShiftView.xaml
+    /// Логика взаимодействия для SellView.xaml
     /// </summary>
-    public class ShiftViewModel
+    public class SellViewModel
     {
-        public ShiftViewModel()
+        public SellViewModel()
         {
             
         }

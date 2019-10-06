@@ -1,4 +1,4 @@
-﻿<Page x:Class="GraduationProject.ViewModel.ShiftViewModel"
+﻿<Page x:Class="GraduationProject.View.ShiftView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:GraduationProject"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1055"
-      Title="ShiftView">
+      Title="ShiftView"
+      DataContext="ViewModel.ShiftViewModel">
     <Page.Resources>
         <Style TargetType="Label" x:Key="LeftLabel">
             <Setter Property="Margin" Value="20,0,0,0"/>

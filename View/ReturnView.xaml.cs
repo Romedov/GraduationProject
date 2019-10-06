@@ -13,16 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GraduationProject.ViewModel
+namespace GraduationProject.View
 {
     /// <summary>
-    /// Логика взаимодействия для ShiftView.xaml
+    /// Логика взаимодействия для ReturnView.xaml
     /// </summary>
-    public class ShiftViewModel
+    public partial class ReturnView : Page
     {
-        public ShiftViewModel()
+        public ReturnView()
         {
-            
+            InitializeComponent();
         }
     }
 }
