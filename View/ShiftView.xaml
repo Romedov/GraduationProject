@@ -33,13 +33,20 @@
             <Setter Property="Background" Value="#e3e3e3"/>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#5b7cf9"/>
-            <Setter Property="FontFamily" Value="Century Gothic"/>
-            <Setter Property="FontSize" Value="20 pt"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="#e3e3e3"/>
+            <Style.Setters>
+                <Setter Property="Background" Value="#5b7cf9"/>
+                <Setter Property="FontFamily" Value="Century Gothic"/>
+                <Setter Property="FontSize" Value="20 pt"/>
+                <Setter Property="FontWeight" Value="DemiBold"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="#e3e3e3"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Page.Resources>
 
@@ -62,8 +69,8 @@
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Grid.Row="0" Content="Денег в кассе" Style="{StaticResource LeftLabel}"/>
             <Label x:Name="moneyHave" Grid.Column="1" Grid.Row="0" Content="0" Style="{StaticResource RightLabel}"/>
-            <Button x:Name="AddBtn" Content="Добавить" Grid.Column="0" Grid.Row="1"/>
-            <Button x:Name="ExtractBtn" Content="Изъять" Grid.Column="1" Grid.Row="1"/>
+            <Button x:Name="AddBtn" Content="Добавить" Grid.Column="0" Grid.Row="1" IsEnabled="False"/>
+            <Button x:Name="ExtractBtn" Content="Изъять" Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
             <Canvas Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
             <Label Grid.Column="0" Grid.Row="3" Content="Продажи" Style="{StaticResource LeftLabel}"/>
             <Label x:Name="MoneyGotten" Grid.Column="1" Grid.Row="3" Content="0" Style="{StaticResource RightLabel}"/>
@@ -75,7 +82,7 @@
             <Label x:Name="Extarctions" Grid.Column="1" Grid.Row="6" Content="0" Style="{StaticResource RightLabel}"/>
             <Canvas Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"/>
             <Button x:Name="StartBtn" Content="Начать смену" Grid.Column="0" Grid.Row="8"/>
-            <Button x:Name="FinishBtn" Content="Завершить смену" Grid.Column="1" Grid.Row="8"/>
+            <Button x:Name="FinishBtn" Content="Завершить смену" Grid.Column="1" Grid.Row="8" IsEnabled="False"/>
         </Grid>
     </Grid>
 </Page>
