@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GraduationProject.Model;
+using GraduationProject.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +24,12 @@ namespace GraduationProject.View
         public AuthorizationWindow()
         {
             InitializeComponent();
-
+            this.DataContext = App.ShiftVM;
+        }
+        private void AuthEventer(object sender, EventArgs e)
+        {
+            App.ShiftVM.EnteredPassword = Password.Password;
+            this.DialogResult = true;
         }
     }
 }

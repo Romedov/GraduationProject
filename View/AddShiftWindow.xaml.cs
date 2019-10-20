@@ -22,6 +22,26 @@ namespace GraduationProject.View
         public AddShiftWindow()
         {
             InitializeComponent();
+            this.DataContext = App.ShiftVM;
+        }
+        private void MoneyTypeInPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox tbne = sender as TextBox;
+            if ((!Char.IsDigit(e.Text, 0)) && (e.Text != "."))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                if ((e.Text == ".") && ((tbne.Text.IndexOf(".") != -1) || (tbne.Text == "")))
+                {
+                    e.Handled = true;
+                }
+            } 
+        }
+        private void CloseDialog(object sender, EventArgs e)
+        {
+            this.DialogResult = true;
         }
     }
 }

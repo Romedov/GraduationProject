@@ -8,7 +8,7 @@
         Title="Внесение средств"
         Height="150" Width="450"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Background="#292728">
     <Window.Resources>
         <Style TargetType="TextBox">
@@ -16,6 +16,7 @@
             <Setter Property="FontSize" Value="20 pt"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="Margin" Value="0,0,0,5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="Button">
             <Style.Setters>
@@ -50,7 +51,7 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Content="К внесению"/>
-        <TextBox x:Name="MoneyTypeIn" Grid.Row="0" Grid.Column="1"/>
-        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Добавить"/>
+        <TextBox x:Name="MoneyTypeIn" Text="{Binding MoneyToAddOrWithdraw, Mode=OneWayToSource}" Grid.Row="0" Grid.Column="1" PreviewTextInput="MoneyTypeInPreviewTextInput" />
+        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Добавить" Click="CloseDialog"/>
     </Grid>
 </Window>

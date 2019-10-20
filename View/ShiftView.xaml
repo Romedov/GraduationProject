@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:GraduationProject"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1055"
-      Title="ShiftView"
-      DataContext="ViewModel.ShiftViewModel">
+      Title="ShiftView">
     <Page.Resources>
         <Style TargetType="Label" x:Key="LeftLabel">
             <Setter Property="Margin" Value="20,0,0,0"/>
@@ -32,7 +31,7 @@
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Background" Value="#e3e3e3"/>
         </Style>
-        <Style TargetType="Button">
+        <Style x:Key="ShiftButtons" TargetType="Button">
             <Style.Setters>
                 <Setter Property="Background" Value="#5b7cf9"/>
                 <Setter Property="FontFamily" Value="Century Gothic"/>
@@ -46,6 +45,13 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Foreground" Value="Black"/>
                 </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="StartButton" TargetType="Button" BasedOn="{StaticResource ShiftButtons}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ButtonIsEnabled}" Value="True">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
             </Style.Triggers>
         </Style>
     </Page.Resources>
@@ -68,21 +74,21 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Grid.Row="0" Content="Денег в кассе" Style="{StaticResource LeftLabel}"/>
-            <Label x:Name="moneyHave" Grid.Column="1" Grid.Row="0" Content="0" Style="{StaticResource RightLabel}"/>
-            <Button x:Name="AddBtn" Content="Добавить" Grid.Column="0" Grid.Row="1" IsEnabled="False"/>
-            <Button x:Name="ExtractBtn" Content="Изъять" Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
+            <Label x:Name="currentCash" Grid.Column="1" Grid.Row="0" Style="{StaticResource RightLabel}" Content="{Binding CurrentShift.CurrentCash}"/>
+            <Button x:Name="AddBtn" Content="Добавить" Grid.Column="0" Grid.Row="1" Style="{StaticResource ShiftButtons}" IsEnabled="{Binding ButtonIsEnabled}" Command="{Binding AddMoney}"/>
+            <Button x:Name="ExtractBtn" Content="Изъять" Grid.Column="1" Grid.Row="1" Style="{StaticResource ShiftButtons}" IsEnabled="{Binding ButtonIsEnabled}" Command="{Binding WithdrawMoney}"/>
             <Canvas Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
             <Label Grid.Column="0" Grid.Row="3" Content="Продажи" Style="{StaticResource LeftLabel}"/>
-            <Label x:Name="MoneyGotten" Grid.Column="1" Grid.Row="3" Content="0" Style="{StaticResource RightLabel}"/>
+            <Label x:Name="cashReceived" Grid.Column="1" Grid.Row="3" Content="{Binding CurrentShift.CashReceived}" Style="{StaticResource RightLabel}"/>
             <Label Grid.Column="0" Grid.Row="4" Content="Возвраты" Style="{StaticResource LeftLabel}"/>
-            <Label x:Name="MoneyReturned" Grid.Column="1" Grid.Row="4" Content="0" Style="{StaticResource RightLabel}"/>
+            <Label x:Name="cashReturned" Grid.Column="1" Grid.Row="4" Content="{Binding CurrentShift.CashReturned}" Style="{StaticResource RightLabel}"/>
             <Label Grid.Column="0" Grid.Row="5" Content="Внесения" Style="{StaticResource LeftLabel}"/>
-            <Label x:Name="Additions" Grid.Column="1" Grid.Row="5" Content="0" Style="{StaticResource RightLabel}"/>
+            <Label x:Name="cashAdded" Grid.Column="1" Grid.Row="5" Content="{Binding CurrentShift.CashAdded}" Style="{StaticResource RightLabel}"/>
             <Label Grid.Column="0" Grid.Row="6" Content="Изъятия" Style="{StaticResource LeftLabel}"/>
-            <Label x:Name="Extarctions" Grid.Column="1" Grid.Row="6" Content="0" Style="{StaticResource RightLabel}"/>
+            <Label x:Name="cashWithdrawn" Grid.Column="1" Grid.Row="6" Content="{Binding CurrentShift.CashWithdrawn}" Style="{StaticResource RightLabel}"/>
             <Canvas Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"/>
-            <Button x:Name="StartBtn" Content="Начать смену" Grid.Column="0" Grid.Row="8"/>
-            <Button x:Name="FinishBtn" Content="Завершить смену" Grid.Column="1" Grid.Row="8" IsEnabled="False"/>
+            <Button x:Name="StartBtn" Content="Начать смену" Grid.Column="0" Grid.Row="8" Style="{StaticResource StartButton}" Command="{Binding AuthWndOpenCommand}"/>
+            <Button x:Name="FinishBtn" Content="Завершить смену" Grid.Column="1" Grid.Row="8" Style="{StaticResource ShiftButtons}" IsEnabled="{Binding ButtonIsEnabled}" Command="{Binding EndShift}"/>
         </Grid>
     </Grid>
 </Page>

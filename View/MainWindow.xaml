@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraduationProject"
         mc:Ignorable="d"
-        Title="Cashbox" Height="700 px" Width="1300 px" MinWidth="1300 px" MinHeight="700 px"
-        DataContext="ViewModel.MainWindowViewModel">
+        Title="Cashbox" Height="700 px" Width="1300 px" MinWidth="1300 px" MinHeight="700 px">
     <Window.Resources>
         <Style TargetType="Button">
             <Style.Setters>
@@ -73,14 +72,14 @@
                 <RowDefinition Height="55 px"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="SellBtn" Content="Продажа" Grid.Row="0" Grid.Column="1" Click="PageSwitch" IsEnabled="False"/>
-            <Button x:Name="ReturnBtn" Content="Возврат" Grid.Row="1" Grid.Column="1" Click="PageSwitch" IsEnabled="False"/>
+            <Button x:Name="SellBtn" Content="Продажа" Grid.Row="0" Grid.Column="1" Click="PageSwitch" IsEnabled="{Binding ButtonIsEnabled}"/>
+            <Button x:Name="ReturnBtn" Content="Возврат" Grid.Row="1" Grid.Column="1" Click="PageSwitch" IsEnabled="{Binding ButtonIsEnabled}"/>
             <Button x:Name="ShiftBtn" Content="Смена" Grid.Row="2" Grid.Column="1" Click="PageSwitch"/>
             <Button x:Name="ExitBtn" Content="Завершение работы" Grid.Row="3" Grid.Column="1" Click="PageSwitch"/>
             <DockPanel x:Name="PageIndicator" Grid.Row="2" Grid.Column="0"/>
         </Grid>
         <DockPanel Grid.Row="0" Grid.Column="1" LastChildFill="False">
-            <Label DockPanel.Dock="Right" Content="USER"/>
+            <Label DockPanel.Dock="Right" Content="{Binding UserName}"/>
         </DockPanel>
         <Frame x:Name="MainAction" Source="ShiftView.xaml" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1"/>
     </Grid>

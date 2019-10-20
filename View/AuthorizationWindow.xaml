@@ -8,7 +8,7 @@
         Title="Авторизация"
         Width="350 px" Height="300 px"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Background="#292728">
     <Window.Resources>
         <Style TargetType="Button">
@@ -56,12 +56,12 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="2.4*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Логин" Grid.Column="0" Grid.Row="0"/>
         <Label Content="Пароль" Grid.Column="0" Grid.Row="2"/>
-        <TextBox x:Name="Login" Grid.Column="1" Grid.Row="0"/>
+        <TextBox x:Name="Login" Grid.Column="1" Grid.Row="0" Text="{Binding EnteredLogin, Mode=OneWayToSource}"/>
         <PasswordBox x:Name="Password" Grid.Column="1" Grid.Row="2"/>
-        <Button Grid.ColumnSpan="2" Grid.Row="4" Content="Вход"/>
+        <Button Grid.ColumnSpan="2" Grid.Row="4" Content="Вход" Command="{Binding AuthorizationCommand}" Click="AuthEventer"/>
     </Grid>
 </Window>

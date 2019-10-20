@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraduationProject.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace GraduationProject
     /// </summary>
     public partial class App : Application
     {
+        public static ShiftViewModel ShiftVM { get; private set; } = new ShiftViewModel();
     }
 }

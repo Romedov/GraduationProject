@@ -8,6 +8,7 @@ namespace GraduationProject
 
     public partial class Sale
     {
+        #region Public properties
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -19,5 +20,6 @@ namespace GraduationProject
         public string IId { get; set; }
 
         public long Number { get; set; }
+        #endregion
     }
 }

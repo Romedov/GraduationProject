@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GraduationProject.Model;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Controls;
+using GraduationProject.View;
 
 namespace GraduationProject.ViewModel
 {
@@ -11,9 +17,6 @@ namespace GraduationProject.ViewModel
     /// </summary>
     public class MainWindowViewModel
     {
-        public MainWindowViewModel()
-        {
-
-        }
+        
     }
 }

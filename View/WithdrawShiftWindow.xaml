@@ -4,18 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraduationProject.View"
+        xmlns:localConverter="clr-namespace:GraduationProject.Converter"
         mc:Ignorable="d"
         Title="Изъятие средств" 
         Height="150" Width="450"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Background="#292728">
     <Window.Resources>
+        <localConverter:StringToDecimalConverter x:Key="StringToDecimalConverter" />
         <Style TargetType="TextBox">
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="FontSize" Value="20 pt"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="Margin" Value="0,0,0,5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="Button">
             <Style.Setters>
@@ -50,7 +53,7 @@
             <ColumnDefinition Width="2.5*"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Content="К изъятию"/>
-        <TextBox x:Name="MoneyTypeIn" Grid.Row="0" Grid.Column="1"/>
-        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Добавить"/>
+        <TextBox x:Name="MoneyTypeIn" Text="{Binding MoneyToAddOrWithdraw, Converter={StaticResource StringToDecimalConverter}, Mode=OneWayToSource}" Grid.Row="0" Grid.Column="1" PreviewTextInput="MoneyTypeInPreviewTextInput"/>
+        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Изъять" Click="CloseDialog"/>
     </Grid>
 </Window>

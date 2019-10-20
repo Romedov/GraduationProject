@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraduationProject.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace GraduationProject.View
         public ShiftView()
         {
             InitializeComponent();
+            this.DataContext = App.ShiftVM;
         }
     }
 }

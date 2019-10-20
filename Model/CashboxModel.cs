@@ -5,9 +5,9 @@ namespace GraduationProject
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class CashboxModelContext : DbContext
+    public partial class CashboxModel : DbContext
     {
-        public CashboxModelContext()
+        public CashboxModel()
             : base("name=CashboxModel")
         {
         }
@@ -17,6 +17,14 @@ namespace GraduationProject
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<Shift> Shifts { get; set; }
         public virtual DbSet<User> Users { get; set; }
+
+        public void DBConnectionCheck()
+        {
+            if (!this.Database.Exists())
+            {
+                throw new Exception("Нет соединения с базой данных!");
+            }
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,7 +38,7 @@ namespace GraduationProject
 
             modelBuilder.Entity<Item>()
                 .Property(e => e.Price)
-                .HasPrecision(18, 0);
+                .HasPrecision(18, 2);
 
             modelBuilder.Entity<Return>()
                 .Property(e => e.IId)
@@ -46,19 +54,23 @@ namespace GraduationProject
 
             modelBuilder.Entity<Shift>()
                 .Property(e => e.CashReceived)
-                .HasPrecision(18, 0);
+                .HasPrecision(18, 2);
 
             modelBuilder.Entity<Shift>()
                 .Property(e => e.CashReturned)
-                .HasPrecision(18, 0);
+                .HasPrecision(18, 2);
 
             modelBuilder.Entity<Shift>()
                 .Property(e => e.CashAdded)
-                .HasPrecision(18, 0);
+                .HasPrecision(18, 2);
 
             modelBuilder.Entity<Shift>()
                 .Property(e => e.CashWithdrawn)
-                .HasPrecision(18, 0);
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Shift>()
+                .Property(e => e.CurrentCash)
+                .HasPrecision(18, 2);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.UId)
