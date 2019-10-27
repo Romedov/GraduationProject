@@ -17,6 +17,7 @@ namespace GraduationProject
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<Shift> Shifts { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<FreeItem> FreeItems { get; set; }
 
         public void DBConnectionCheck()
         {
@@ -28,6 +29,7 @@ namespace GraduationProject
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            #region Item
             modelBuilder.Entity<Item>()
                 .Property(e => e.IId)
                 .IsUnicode(false);
@@ -39,15 +41,27 @@ namespace GraduationProject
             modelBuilder.Entity<Item>()
                 .Property(e => e.Price)
                 .HasPrecision(18, 2);
-
+            #endregion
+            
+            #region FreeItem
+            modelBuilder.Entity<FreeItem>()
+                .Property(e => e.CashSum)
+                .HasPrecision(18, 2);
+            #endregion
+            
+            #region Return
             modelBuilder.Entity<Return>()
                 .Property(e => e.IId)
                 .IsUnicode(false);
-
+            #endregion
+            
+            #region Sale
             modelBuilder.Entity<Sale>()
                 .Property(e => e.IId)
                 .IsUnicode(false);
-
+            #endregion
+            
+            #region Shift
             modelBuilder.Entity<Shift>()
                 .Property(e => e.UId)
                 .IsUnicode(false);
@@ -71,7 +85,9 @@ namespace GraduationProject
             modelBuilder.Entity<Shift>()
                 .Property(e => e.CurrentCash)
                 .HasPrecision(18, 2);
-
+            #endregion
+            
+            #region User
             modelBuilder.Entity<User>()
                 .Property(e => e.UId)
                 .IsUnicode(false);
@@ -91,6 +107,7 @@ namespace GraduationProject
             modelBuilder.Entity<User>()
                 .Property(e => e.FatherName)
                 .IsUnicode(false);
+            #endregion
         }
     }
 }

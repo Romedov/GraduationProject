@@ -116,8 +116,7 @@ namespace GraduationProject
                 }
                 catch(Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    TransactionCompleted?.Invoke(shift, new ShiftTransactionEventArgs("—редства добавлены не были!", false));
+                    TransactionCompleted?.Invoke(shift, new ShiftTransactionEventArgs(e.Message+"\n—редства добавлены не были!", false));
                 }
             }
         }
@@ -143,8 +142,7 @@ namespace GraduationProject
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    TransactionCompleted?.Invoke(shift, new ShiftTransactionEventArgs("—редства изъ€ты не были!", false));
+                    TransactionCompleted?.Invoke(shift, new ShiftTransactionEventArgs(e.Message+"\n—редства изъ€ты не были!", false));
                 }
             }
         }
