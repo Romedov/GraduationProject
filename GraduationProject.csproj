@@ -70,7 +70,9 @@
     </ApplicationDefinition>
     <Compile Include="Converter\StringToDecimalConverter.cs" />
     <Compile Include="Model\CashboxModel.cs" />
+    <Compile Include="Model\FreeItem.cs" />
     <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\ItemSearchEventArgs.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="Model\Return.cs" />
     <Compile Include="Model\Sale.cs" />
